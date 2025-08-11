@@ -1,15 +1,15 @@
-// src/assets/imagenes.js
-
 export const residuesImgs = {
-  botella1: '/images/residuos/botella-plastico.png',
-  papel1: '/images/residuos/papel.png',
-  lata1: '/images/residuos/lata.png',
-  manzana1: '/images/residuos/organico.png',
+  botella1: '/images/organic-1.png',
+  papel1: '/images/organic-1.png',
+  lata1: '/images/organic-1.png',
+  manzana1: '/images/organic-1.png',
 }
 
 export const containersImgs = {
-  plastico: '/images/contenedores/plastico.png',
-  papel: '/images/contenedores/papel.png',
-  metal: '/images/contenedores/metal.png',
-  organico: '/images/contenedores/organico.png',
+  plastic: '/images/container-yellow.png',
+  papel: '/images/container-blue.png',
+  vidrio: '/images/container-green.png',
+  noReciclable: '/images/container-red.png',
+  organic: '/images/container-brown.png',
+  peligroso: '/images/container-grey.png',
 }
