@@ -1,15 +1,17 @@
 [
   {
     "id": 1,
-    "name": "Nivel 1",
-    "items": ["botella1", "papel1", "lata1", "manzana1"],
+    "name": "Level 1",
+    "residues": ["bottle1", "paper1", "can1", "apple1"],
+    "containers": ["plastic", "paper", "non-recyclable", "organic"],
     "goal": 3,
     "timeLimit": 30
   },
   {
     "id": 2,
-    "name": "Nivel 2",
-    "items": ["botella1", "papel1", "lata1", "manzana1", "vidrio1", "carton1"],
+    "name": "Level 2",
+    "residues": ["bottle1", "paper1", "can1", "apple1", "glass1", "cardboard1"],
+    "containers": ["plastic", "paper", "non-recyclable", "organic", "glass"],
     "goal": 5,
     "timeLimit": 25
   }

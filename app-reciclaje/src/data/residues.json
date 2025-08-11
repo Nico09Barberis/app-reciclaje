@@ -1,0 +1,39 @@
+[
+  {
+    "id": "bottle1",
+    "name": "Plastic Bottle",
+    "category": "plastic",
+    "img": "/images/organic-1.png"
+  },
+  {
+    "id": "paper1",
+    "name": "Paper Sheet",
+    "category": "paper",
+    "img": "/images/organic-1.png"
+  },
+  {
+    "id": "can1",
+    "name": "Aluminum Can",
+    "category": "metal",
+    "img": "/images/organic-1.png"
+  },
+  {
+    "id": "apple1",
+    "name": "Apple Peel",
+    "category": "organic",
+    "img": "/images/organic-1.png"
+
+  },
+  {
+    "id": "glass1",
+    "name": "Glass Bottle",
+    "category": "glass",
+    "img": "/images/organic-1.png"
+  },
+  {
+    "id": "cardboard1",
+    "name": "Cardboard Box",
+    "category": "paper",
+    "img": "/images/organic-1.png"
+  }
+]

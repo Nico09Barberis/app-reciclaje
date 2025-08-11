@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { residuesImgs, containersImgs } from "../assets/images";
+import residuesData from "../data/residues.json";
+import containersData from "../data/containers.json";
+import levelsData from "../data/levels.json";
 import {
   DndContext,
   useDraggable,
@@ -11,158 +13,110 @@ import {
 } from "@dnd-kit/core";
 import { motion, AnimatePresence } from "framer-motion";
 
-const residues = [
-  {
-    id: "botella1",
-    tipo: "plastico",
-    nombre: "Botella plástica",
-    img: residuesImgs.botella1,
-  },
-  {
-    id: "papel1",
-    tipo: "papel",
-    nombre: "Hoja de papel",
-    img: residuesImgs.papel1,
-  },
-  {
-    id: "lata1",
-    tipo: "metal",
-    nombre: "Lata de aluminio",
-    img: residuesImgs.lata1,
-  },
-  {
-    id: "manzana1",
-    tipo: "organico",
-    nombre: "Cáscara de manzana",
-    img: residuesImgs.manzana1,
-  },
-];
-
-const containers = [
-  {
-    id: "plastico",
-    nombre: "Plástico",
-    color: "bg-yellow-400",
-    img: containersImgs.plastic,
-  },
-  {
-    id: "papel",
-    nombre: "Papel",
-    color: "bg-blue-400",
-    img: containersImgs.papel,
-  },
-  {
-    id: "no-reciclable",
-    nombre: "No-reciclable",
-    color: "bg-gray-400",
-    img: containersImgs.noReciclable,
-  },
-  {
-    id: "peligroso",
-    nombre: "Peligroso",
-    color: "bg-red-600",
-    img: containersImgs.peligroso,
-  },
-  {
-    id: "vidrio",
-    nombre: "vidrio",
-    color: "bg-green-400",
-    img: containersImgs.vidrio,
-  },
-  {
-    id: "organico",
-    nombre: "Orgánico",
-    color: "bg-amber-700",
-    img: containersImgs.organic,
-  },
-];
-
-function Draggable({ id, nombre, img }) {
+function Draggable({ id, name, img }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({ id });
-
-  const style = {
-    transform: transform
-      ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-      : undefined,
-    opacity: isDragging ? 0.5 : 1,
-  };
 
   return (
     <motion.div
       ref={setNodeRef}
-      style={style}
+      style={{
+        transform: transform
+          ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+          : undefined,
+        opacity: isDragging ? 0.5 : 1,
+      }}
       {...listeners}
       {...attributes}
-      className="p-2 m-2 bg-white rounded shadow cursor-grab select-none flex flex-col items-center w-24"
+      className="p-2 m-2 cursor-grab select-none flex flex-col items-center w-24"
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       whileTap={{ scale: 1.1 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <img src={img} alt={nombre} className="w-16 h-16 object-contain mb-1" />
-      <span className="text-sm text-center">{nombre}</span>
+      <img src={img} alt={name} className="w-16 h-16 object-contain mb-1" />
+      <span className="text-sm text-center">{name}</span>
     </motion.div>
   );
 }
 
-function Droppable({ id, nombre, color, img }) {
-  const { setNodeRef, isOver: droppableIsOver } = useDroppable({ id });
+function Droppable({ id, name, color, img }) {
+  const { setNodeRef, isOver } = useDroppable({ id });
 
   return (
     <motion.div
       ref={setNodeRef}
-      className={`${color} p-4 m-2 rounded shadow min-h-[120px] flex flex-col items-center justify-center text-white font-bold text-lg`}
-      initial={{ boxShadow: "0 0 0px rgba(0,0,0,0)" }}
+      className={`${color} p-4 m-2 rounded min-h-[120px] flex flex-col items-center justify-center text-black font-bold text-lg`}
       animate={{
-        boxShadow: droppableIsOver
-          ? "0 0 15px 5px rgba(72, 187, 120, 0.7)" // verde glow
-          : "0 0 0px rgba(0,0,0,0)",
+        filter: "none", // quitar cualquier filtro, sombra incluida
       }}
       transition={{ duration: 0.3 }}
-      role="button"
     >
-      <img src={img} alt={`${nombre} contenedor`} className="w-12 h-12 mb-2" />
-      {nombre}
+      <img src={img} alt={`${name} container`} className="w-12 h-12 mb-2" />
+      {name}
     </motion.div>
   );
 }
 
 export default function GameComp() {
+  const [level, setLevel] = useState(1);
   const [message, setMessage] = useState("");
-  const [correctos, setCorrectos] = useState(0);
+  const [corrects, setCorrects] = useState(0);
+
+  // Buscar el nivel actual
+  const currentLevel = levelsData.find((l) => l.id === level);
+
+  // Validar que exista currentLevel y sus arrays antes de filtrar
+  const residues =
+    currentLevel && currentLevel.residues
+      ? residuesData.filter((r) => currentLevel.residues.includes(r.id))
+      : [];
+
+  const containers =
+    currentLevel && currentLevel.containers
+      ? containersData.filter((c) => currentLevel.containers.includes(c.id))
+      : [];
 
   const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 5,
-      },
-    })
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
   );
 
   const handleDragEnd = (event) => {
     const { active, over } = event;
+    if (!over) return setMessage("Drop the object on a container");
 
-    if (!over) {
-      setMessage("Suelta el objeto sobre un contenedor");
-      return;
-    }
+    const item = residues.find((r) => r.id === active.id);
+    const container = containers.find((c) => c.id === over.id);
 
-    const objeto = residues.find((r) => r.id === active.id);
-    if (!objeto) return;
+    if (!item || !container) return;
 
-    if (objeto.tipo === over.id) {
-      setMessage(`¡Correcto! ${objeto.nombre} va en ${over.id}`);
-      setCorrectos((c) => c + 1);
+    // Validación por categoría
+    if (item.category === container.id) {
+      setMessage(`✅ Correct! ${item.name} goes in ${container.name}`);
+      setCorrects((c) => {
+        const newCount = c + 1;
+        if (newCount >= (currentLevel?.goal || Infinity)) {
+          setTimeout(() => {
+            if (level < levelsData.length) {
+              setLevel(level + 1);
+              setCorrects(0);
+              setMessage(`🌟 Level ${level + 1}`);
+            } else {
+              setMessage("🎉 Game completed!");
+            }
+          }, 1000);
+        }
+        return newCount;
+      });
     } else {
-      setMessage(`Oops! ${objeto.nombre} NO va en ${over.id}`);
+      setMessage(`❌ ${item.name} does NOT go in ${container.name}`);
     }
   };
 
   return (
     <div className="p-4 min-h-screen bg-green-50">
       <h2 className="text-2xl font-bold mb-4 text-center">
-        Clasifica los residuos
+        Sort the waste - Level {level}
       </h2>
 
       <DndContext
@@ -171,20 +125,14 @@ export default function GameComp() {
         onDragEnd={handleDragEnd}
       >
         <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {residues.map(({ id, nombre, img }) => (
-            <Draggable key={id} id={id} nombre={nombre} img={img} />
+          {residues.map(({ id, name, img }) => (
+            <Draggable key={id} id={id} name={name} img={img} />
           ))}
         </div>
 
         <div className="flex flex-wrap justify-center gap-4">
-          {containers.map(({ id, nombre, color, img }) => (
-            <Droppable
-              key={id}
-              id={id}
-              nombre={nombre}
-              color={color}
-              img={img}
-            />
+          {containers.map(({ id, name, color, img }) => (
+            <Droppable key={id} id={id} name={name} color={color} img={img} />
           ))}
         </div>
       </DndContext>
@@ -205,7 +153,7 @@ export default function GameComp() {
       </AnimatePresence>
 
       <div className="mt-2 text-center text-green-700 font-bold">
-        Puntaje: {correctos}
+        Score: {corrects} / {currentLevel?.goal || "?"}
       </div>
     </div>
   );
