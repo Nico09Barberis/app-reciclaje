@@ -21,37 +21,37 @@ const containers = [
   {
     id: "plastico",
     nombre: "Plástico",
-    color: "bg-blue-400",
+    color: "bg-yellow-400",
     img: containersImgs.plastic,
   },
   {
     id: "papel",
     nombre: "Papel",
-    color: "bg-yellow-400",
+    color: "bg-blue-400",
     img: containersImgs.papel,
   },
   {
     id: "no-reciclable",
     nombre: "No-reciclable",
-    color: "bg-yellow-400",
+    color: "bg-gray-400",
     img: containersImgs.noReciclable,
   },
   {
     id: "peligroso",
     nombre: "Peligroso",
-    color: "bg-yellow-400",
+    color: "bg-red-600",
     img: containersImgs.peligroso,
   },
   {
     id: "vidrio",
     nombre: "vidrio",
-    color: "bg-gray-400",
+    color: "bg-green-400",
     img: containersImgs.vidrio,
   },
   {
     id: "organico",
     nombre: "Orgánico",
-    color: "bg-green-400",
+    color: "bg-amber-700",
     img: containersImgs.organic,
   },
 ];

@@ -9,7 +9,7 @@ export const containersImgs = {
   plastic: '/images/container-yellow.png',
   papel: '/images/container-blue.png',
   vidrio: '/images/container-green.png',
-  noReciclable: '/images/container-red.png',
+  noReciclable: '/images/container-grey.png',
   organic: '/images/container-brown.png',
-  peligroso: '/images/container-grey.png',
+  peligroso: '/images/container-red.png',
 }
