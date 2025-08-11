@@ -9,13 +9,34 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+import { motion, AnimatePresence } from "framer-motion";
 
 const residues = [
-  { id: 'botella1', tipo: 'plastico', nombre: 'Botella plástica', img: residuesImgs.botella1 },
-  { id: 'papel1', tipo: 'papel', nombre: 'Hoja de papel', img: residuesImgs.papel1 },
-  { id: 'lata1', tipo: 'metal', nombre: 'Lata de aluminio', img: residuesImgs.lata1 },
-  { id: 'manzana1', tipo: 'organico', nombre: 'Cáscara de manzana', img: residuesImgs.manzana1 },
-]
+  {
+    id: "botella1",
+    tipo: "plastico",
+    nombre: "Botella plástica",
+    img: residuesImgs.botella1,
+  },
+  {
+    id: "papel1",
+    tipo: "papel",
+    nombre: "Hoja de papel",
+    img: residuesImgs.papel1,
+  },
+  {
+    id: "lata1",
+    tipo: "metal",
+    nombre: "Lata de aluminio",
+    img: residuesImgs.lata1,
+  },
+  {
+    id: "manzana1",
+    tipo: "organico",
+    nombre: "Cáscara de manzana",
+    img: residuesImgs.manzana1,
+  },
+];
 
 const containers = [
   {
@@ -57,47 +78,55 @@ const containers = [
 ];
 
 function Draggable({ id, nombre, img }) {
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
-    id,
-  })
+  const { attributes, listeners, setNodeRef, transform, isDragging } =
+    useDraggable({ id });
 
   const style = {
     transform: transform
       ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
       : undefined,
     opacity: isDragging ? 0.5 : 1,
-  }
+  };
 
   return (
-    <div
+    <motion.div
       ref={setNodeRef}
       style={style}
       {...listeners}
       {...attributes}
       className="p-2 m-2 bg-white rounded shadow cursor-grab select-none flex flex-col items-center w-24"
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      whileTap={{ scale: 1.1 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <img src={img} alt={nombre} className="w-16 h-16 object-contain mb-1" />
       <span className="text-sm text-center">{nombre}</span>
-    </div>
-  )
+    </motion.div>
+  );
 }
 
 function Droppable({ id, nombre, color, img }) {
-  const { setNodeRef, isOver: droppableIsOver } = useDroppable({ id })
+  const { setNodeRef, isOver: droppableIsOver } = useDroppable({ id });
+
   return (
-    <div
+    <motion.div
       ref={setNodeRef}
-      className={`${color} p-4 m-2 rounded shadow min-h-[120px] flex flex-col items-center justify-center text-white font-bold text-lg ${
-        droppableIsOver ? 'ring-4 ring-green-300' : ''
-      }`}
+      className={`${color} p-4 m-2 rounded shadow min-h-[120px] flex flex-col items-center justify-center text-white font-bold text-lg`}
+      initial={{ boxShadow: "0 0 0px rgba(0,0,0,0)" }}
+      animate={{
+        boxShadow: droppableIsOver
+          ? "0 0 15px 5px rgba(72, 187, 120, 0.7)" // verde glow
+          : "0 0 0px rgba(0,0,0,0)",
+      }}
+      transition={{ duration: 0.3 }}
       role="button"
     >
       <img src={img} alt={`${nombre} contenedor`} className="w-12 h-12 mb-2" />
       {nombre}
-    </div>
-  )
+    </motion.div>
+  );
 }
-
 
 export default function GameComp() {
   const [message, setMessage] = useState("");
@@ -130,6 +159,7 @@ export default function GameComp() {
     }
   };
 
+
   return (
     <div className="p-4 min-h-screen bg-green-50">
       <h2 className="text-2xl font-bold mb-4 text-center">
@@ -160,7 +190,21 @@ export default function GameComp() {
         </div>
       </DndContext>
 
-      <div className="mt-8 text-center font-semibold text-lg">{message}</div>
+      <AnimatePresence mode="wait">
+        {message && (
+          <motion.div
+            key={message}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className="mt-8 text-center font-semibold text-lg"
+          >
+            {message}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="mt-2 text-center text-green-700 font-bold">
         Puntaje: {correctos}
       </div>
