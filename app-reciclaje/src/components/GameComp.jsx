@@ -4,7 +4,7 @@ import {
   DndContext,
   useDraggable,
   useDroppable,
-  closestCenter,
+  rectIntersection,
   PointerSensor,
   useSensor,
   useSensors,
@@ -159,7 +159,6 @@ export default function GameComp() {
     }
   };
 
-
   return (
     <div className="p-4 min-h-screen bg-green-50">
       <h2 className="text-2xl font-bold mb-4 text-center">
@@ -168,7 +167,7 @@ export default function GameComp() {
 
       <DndContext
         sensors={sensors}
-        collisionDetection={closestCenter}
+        collisionDetection={rectIntersection}
         onDragEnd={handleDragEnd}
       >
         <div className="flex flex-wrap justify-center gap-4 mb-8">
