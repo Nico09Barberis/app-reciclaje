@@ -62,14 +62,17 @@ export default function GameComp() {
   const [level, setLevel] = useState(1);
   const [message, setMessage] = useState("");
   const [corrects, setCorrects] = useState(0);
+  const [placedResidues, setPlacedResidues] = useState([]);
 
   // Buscar el nivel actual
   const currentLevel = levelsData.find((l) => l.id === level);
 
-  // Validar que exista currentLevel y sus arrays antes de filtrar
+   // Filtrar residuos, excluyendo los ya colocados
   const residues =
     currentLevel && currentLevel.residues
-      ? residuesData.filter((r) => currentLevel.residues.includes(r.id))
+      ? residuesData.filter(
+          (r) => currentLevel.residues.includes(r.id) && !placedResidues.includes(r.id)
+        )
       : [];
 
   const containers =
@@ -85,21 +88,26 @@ export default function GameComp() {
     const { active, over } = event;
     if (!over) return setMessage("Drop the object on a container");
 
-    const item = residues.find((r) => r.id === active.id);
+    const item = residuesData.find((r) => r.id === active.id); // ojo, buscar en todos los residuos para evitar que no encuentre
     const container = containers.find((c) => c.id === over.id);
 
     if (!item || !container) return;
 
-    // Validación por categoría
     if (item.category === container.id) {
       setMessage(`✅ Correct! ${item.name} goes in ${container.name}`);
+
       setCorrects((c) => {
         const newCount = c + 1;
+
+        // Agrego el residuo a la lista de colocados
+        setPlacedResidues((prev) => [...prev, item.id]);
+
         if (newCount >= (currentLevel?.goal || Infinity)) {
           setTimeout(() => {
             if (level < levelsData.length) {
               setLevel(level + 1);
               setCorrects(0);
+              setPlacedResidues([]); // limpiar residuos colocados para nuevo nivel
               setMessage(`🌟 Level ${level + 1}`);
             } else {
               setMessage("🎉 Game completed!");
