@@ -12,7 +12,7 @@ export default function Home() {
         Aprende a clasificar los residuos correctamente y cuida el planeta de forma divertida.
       </p>
       <button
-        onClick={() => navigate('/juego')}
+        onClick={() => navigate('/game')}
         className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
       >
         Empezar

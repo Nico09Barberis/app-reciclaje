@@ -1,5 +1,7 @@
+import GameComp from "../components/GameComp";
+
 export default function Game () {
   return (
-    <h1>hola</h1>
+    <GameComp />
   );
 };
