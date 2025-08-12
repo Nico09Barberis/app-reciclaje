@@ -1,39 +1,76 @@
 [
   {
     "id": "bottle1",
-    "name": "Plastic Bottle",
+    "name": "botella de plastico",
     "category": "plastic",
-    "img": "/images/organic-1.png"
+    "img": "/images/residues/botella-agua.png"
   },
   {
     "id": "paper1",
-    "name": "Paper Sheet",
+    "name": "sobre",
     "category": "paper",
-    "img": "/images/organic-1.png"
+    "img": "/images/residues/sobre.png"
   },
   {
-    "id": "can1",
-    "name": "Aluminum Can",
-    "category": "metal",
-    "img": "/images/organic-1.png"
+    "id": "nonRecyclable1",
+    "name": "pilas y baterias",
+    "category": "non-recyclable",
+    "img": "/images/residues/pilas-baterias.png"
   },
   {
-    "id": "apple1",
-    "name": "Apple Peel",
+    "id": "platano1",
+    "name": "cascara de banana",
     "category": "organic",
-    "img": "/images/organic-1.png"
+    "img": "images/residues/platano.png"
 
   },
   {
     "id": "glass1",
     "name": "Glass Bottle",
     "category": "glass",
-    "img": "/images/organic-1.png"
+    "img": "/images/orgaresidues/"
   },
   {
     "id": "cardboard1",
     "name": "Cardboard Box",
+    "category": "hazardous",
+    "img": "/images/orgaresidues/"
+  },
+    {
+    "id": "bottle2",
+    "name": "Plastic Bottle",
+    "category": "plastic",
+    "img": "/images/orgaresidues/"
+  },
+  {
+    "id": "paper2",
+    "name": "Paper Sheet",
     "category": "paper",
-    "img": "/images/organic-1.png"
+    "img": "/images/residues/"
+  },
+  {
+    "id": "can3",
+    "name": "Aluminum Can",
+    "category": "metal",
+    "img": "/images/orgaresidues/"
+  },
+  {
+    "id": "apple2",
+    "name": "Apple Peel",
+    "category": "organic",
+    "img": "/images/residues/"
+
+  },
+  {
+    "id": "glass2",
+    "name": "Glass Bottle",
+    "category": "glass",
+    "img": "/images/orgaresidues/"
+  },
+  {
+    "id": "cardboard2",
+    "name": "Cardboard Box",
+    "category": "paper",
+    "img": "/images/orgaresidues/"
   }
 ]

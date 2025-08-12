@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Level 1",
-    "residues": ["bottle1", "paper1", "can1", "apple1"],
+    "residues": ["bottle1", "paper1", "nonRecyclable1", "platano1"],
     "containers": ["plastic", "paper", "non-recyclable", "organic"],
     "goal": 3,
     "timeLimit": 30
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "name": "Level 2",
-    "residues": ["bottle1", "paper1", "can1", "apple1", "glass1", "cardboard1"],
+    "residues": ["bottle1", "paper1", "nonRecyclable1", "apple1", "glass1", "cardboard1"],
     "containers": ["plastic", "paper", "non-recyclable", "organic", "glass"],
     "goal": 5,
     "timeLimit": 25
