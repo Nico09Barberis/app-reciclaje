@@ -1,5 +1,6 @@
 // src/pages/Info.jsx
 import { containersInfo } from "../data/containersInfo";
+import FAQ from "./Questions";
 
 const Info = () => {
   return (
@@ -10,7 +11,9 @@ const Info = () => {
           ♻️ Guía de Clasificación de Residuos
         </h1>
         <p className="text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
-          Clasificar los residuos correctamente ayuda a reducir la contaminación, ahorrar energía y dar nueva vida a materiales reciclables.
+          Clasificar los residuos correctamente ayuda a reducir la
+          contaminación, ahorrar energía y dar nueva vida a materiales
+          reciclables.
         </p>
       </section>
 
@@ -48,9 +51,28 @@ const Info = () => {
         ))}
       </section>
 
+      <section className="relative h-96 flex items-center justify-center my-12 text-white overflow-hidden">
+        {/* Imagen de fondo con blur */}
+        <div
+          className="absolute inset-0 bg-center bg-cover filter blur-sm"
+          style={{ backgroundImage: "url('/images/img-info.png')" }}
+        ></div>
+
+        {/* Overlay semitransparente para oscurecer la imagen */}
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+        {/* Contenido encima */}
+        <div className="relative z-10 text-center px-4">
+          <h2 className="text-3xl font-bold">Texto sobre la imagen borrosa</h2>
+          <p className="mt-2">Así se ve el fondo con blur usando TailwindCSS</p>
+        </div>
+      </section>
+
       {/* Consejos prácticos */}
       <section className="mt-16 animate-fadeIn delay-200">
-        <h2 className="text-3xl font-bold mb-5 text-green-700">💡 Consejos Prácticos</h2>
+        <h2 className="text-3xl font-bold mb-5 text-green-700">
+          💡 Consejos Prácticos
+        </h2>
         <ul className="list-disc list-inside text-gray-800 space-y-2 text-lg">
           <li>🧼 Limpia los envases antes de reciclar.</li>
           <li>🚫 No mezcles residuos peligrosos con reciclables.</li>
@@ -61,13 +83,24 @@ const Info = () => {
 
       {/* Datos curiosos */}
       <section className="mt-16 bg-green-100 p-6 rounded-xl shadow-md border-l-4 border-green-500 animate-fadeIn delay-400">
-        <h2 className="text-3xl font-bold mb-5 text-green-700">🌍 ¿Sabías que...?</h2>
+        <h2 className="text-3xl font-bold mb-5 text-green-700">
+          🌍 ¿Sabías que...?
+        </h2>
         <ul className="space-y-3 text-lg text-gray-800">
-          <li>📄 Reciclar una tonelada de papel ahorra <b>17 árboles</b>.</li>
-          <li>🍾 El vidrio puede reciclarse <b>infinitas veces</b>.</li>
-          <li>🥫 Un envase de aluminio reciclado ahorra energía para mantener encendida una TV durante <b>3 horas</b>.</li>
+          <li>
+            📄 Reciclar una tonelada de papel ahorra <b>17 árboles</b>.
+          </li>
+          <li>
+            🍾 El vidrio puede reciclarse <b>infinitas veces</b>.
+          </li>
+          <li>
+            🥫 Un envase de aluminio reciclado ahorra energía para mantener
+            encendida una TV durante <b>3 horas</b>.
+          </li>
         </ul>
       </section>
+
+      <FAQ />
     </div>
   );
 };

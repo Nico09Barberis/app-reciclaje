@@ -2,7 +2,7 @@
 export const containersInfo = [
   {
     id: 1,
-    name: "Plástico",
+    name: "Plásticos-metales",
     color: "bg-yellow-400",
     img: "/images/containers/plastic.png",
     yes: ["Botellas de plástico", "Tapas", "Envases de bebidas"],
@@ -26,9 +26,9 @@ export const containersInfo = [
   },
   {
     id: 4,
-    name: "Metales",
-    color: "bg-gray-400",
-    img: "/images/containers/metal.png",
+    name: "organico",
+    color: "bg-orange-400",
+    img: "/images/containers/organic.png",
     yes: ["Latas de aluminio", "Latas de conserva", "Tapas metálicas"],
     no: ["Objetos oxidados", "Cables", "Electrodomésticos"],
   },
