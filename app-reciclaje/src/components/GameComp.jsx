@@ -162,8 +162,8 @@ export default function GameComp() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4">
-          {containers.map(({ id, name, color, img }) => (
-            <Droppable key={id} id={id} name={name} color={color} img={img} />
+          {containers.map(({ id, name, img }) => (
+            <Droppable key={id} id={id} name={name} img={img} />
           ))}
         </div>
       </DndContext>
