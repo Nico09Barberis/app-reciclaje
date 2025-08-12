@@ -2,17 +2,41 @@
   {
     "id": 1,
     "name": "Level 1",
-    "residues": ["bottle1", "paper1", "nonRecyclable1", "platano1"],
-    "containers": ["plastic", "paper", "non-recyclable", "organic"],
+    "residues": ["plastic1", "paper1", "nonRecyclable1"],
+    "containers": ["plastic", "non-recyclable", "paper"],
     "goal": 3,
     "timeLimit": 30
   },
   {
     "id": 2,
     "name": "Level 2",
-    "residues": ["bottle1", "paper1", "nonRecyclable1", "apple1", "glass1", "cardboard1"],
-    "containers": ["plastic", "paper", "non-recyclable", "organic", "glass"],
-    "goal": 5,
+    "residues": ["plastic2", "nonRecyclable2", "organic2", "glass2"],
+    "containers": ["plastic", "organic", "glass", "non-recyclable"],
+    "goal": 4,
     "timeLimit": 25
+  },
+  {
+    "id": 3,
+    "name": "Level 3",
+    "residues": ["paper3", "nonRecyclable3", "organic3", "glass3"],
+    "containers": ["non-recyclable", "paper", "organic", "glass"],
+    "goal": 4,
+    "timeLimit": 25
+  },
+  {
+    "id": 4,
+    "name": "Level 4",
+    "residues": ["plastic4", "paper4", "nonRecyclable4", "organic4", "glass4"],
+    "containers": ["plastic", "paper", "organic", "glass", "non-recyclable"],
+    "goal": 5,
+    "timeLimit": 20
+  },
+  {
+    "id": 5,
+    "name": "Level 5",
+    "residues": ["plastic5", "paper5", "nonRecyclable5", "organic5", "glass5", "hazardous5"],
+    "containers": ["plastic", "paper", "organic", "glass", "hazardous", "non-recyclable"],
+    "goal": 5,
+    "timeLimit": 18
   }
 ]

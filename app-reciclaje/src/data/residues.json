@@ -1,6 +1,6 @@
 [
   {
-    "id": "bottle1",
+    "id": "plastic1",
     "name": "botella de plastico",
     "category": "plastic",
     "img": "/images/residues/botella-agua.png"
@@ -17,60 +17,123 @@
     "category": "non-recyclable",
     "img": "/images/residues/pilas-baterias.png"
   },
-  {
-    "id": "platano1",
-    "name": "cascara de banana",
-    "category": "organic",
-    "img": "images/residues/platano.png"
 
-  },
   {
-    "id": "glass1",
-    "name": "Glass Bottle",
-    "category": "glass",
-    "img": "/images/orgaresidues/"
-  },
-  {
-    "id": "cardboard1",
-    "name": "Cardboard Box",
-    "category": "hazardous",
-    "img": "/images/orgaresidues/"
-  },
-    {
-    "id": "bottle2",
-    "name": "Plastic Bottle",
+    "id": "plastic2",
+    "name": "tapas de botella",
     "category": "plastic",
-    "img": "/images/orgaresidues/"
+    "img": "/images/residues/tapas-botellas.png"
   },
   {
-    "id": "paper2",
-    "name": "Paper Sheet",
-    "category": "paper",
-    "img": "/images/residues/"
+    "id": "nonRecyclable2",
+    "name": "pañal usado",
+    "category": "non-recyclable",
+    "img": "/images/residues/pañal.png"
   },
   {
-    "id": "can3",
-    "name": "Aluminum Can",
-    "category": "metal",
-    "img": "/images/orgaresidues/"
-  },
-  {
-    "id": "apple2",
-    "name": "Apple Peel",
+    "id": "organic2",
+    "name": "cascara de huevo",
     "category": "organic",
-    "img": "/images/residues/"
-
+    "img": "/images/residues/cascara-huevo.png"
   },
   {
     "id": "glass2",
-    "name": "Glass Bottle",
+    "name": "frasco",
     "category": "glass",
-    "img": "/images/orgaresidues/"
+    "img": "/images/residues/frasco.png"
+  },
+
+  {
+    "id": "paper3",
+    "name": "revistas",
+    "category": "paper",
+    "img": "/images/residues/revistas.png"
   },
   {
-    "id": "cardboard2",
-    "name": "Cardboard Box",
+    "id": "organic3",
+    "name": "Resto de manzana",
+    "category": "organic",
+    "img": "images/residues/resto-manzana.png"
+  
+  },
+  {
+    "id": "glass3",
+    "name": "Vaso roto",
+    "category": "glass",
+    "img": "/images/residues/vaso-roto.png"
+  },
+  {
+    "id": "nonRecyclable3",
+    "name": "Tarro de pintura usado",
+    "category": "non-recyclable",
+    "img": "/images/residues/tarro-pintura.png"
+  },
+
+  {
+    "id": "paper4",
+    "name": "libros",
     "category": "paper",
-    "img": "/images/orgaresidues/"
+    "img": "/images/residues/libros.png"
+  },
+  {
+    "id": "organic4",
+    "name": "Resto de manzana",
+    "category": "organic",
+    "img": "images/residues/resto-manzana.png"
+  },
+  {
+    "id": "glass4",
+    "name": "Perfume vacio",
+    "category": "glass",
+    "img": "/images/residues/perfume.png"
+  },
+  {
+    "id": "nonRecyclable4",
+    "name": "Aerosol",
+    "category": "non-recyclable",
+    "img": "/images/residues/aerosol.png"
+  },
+   {
+    "id": "plastic4",
+    "name": "cajas de cd",
+    "category": "plastic",
+    "img": "/images/residues/cajas-cd.png"
+  },
+
+  {
+    "id": "paper5",
+    "name": "caja de carton",
+    "category": "paper",
+    "img": "/images/residues/caja-carton.png"
+  },
+  {
+    "id": "organic5",
+    "name": "Resto de frutas",
+    "category": "organic",
+    "img": "images/residues/restos-fruta.png"
+  },
+  {
+    "id": "glass5",
+    "name": "Botellas de vidrio",
+    "category": "glass",
+    "img": "/images/residues/botella-vidrio.png"
+  },
+  {
+    "id": "nonRecyclable5",
+    "name": "Colillas de cigarros",
+    "category": "non-recyclable",
+    "img": "/images/residues/cigarro.png"
+  },
+   {
+    "id": "plastic5",
+    "name": "Envases de alimentos",
+    "category": "plastic",
+    "img": "/images/residues/envases-alimentos.png"
+  },
+  {
+    "id": "hazardous5",
+    "name": "Bombilla usada",
+    "category": "hazardous",
+    "img": "/images/residues/bombilla.png"
   }
 ]

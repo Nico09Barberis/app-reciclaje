@@ -30,14 +30,28 @@ function Draggable({ id, name, img }) {
       }}
       {...listeners}
       {...attributes}
-      className="p-2 m-2 cursor-grab select-none flex flex-col items-center w-24"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      whileTap={{ scale: 1.1 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="p-4 m-3 cursor-grab select-none flex flex-col items-center w-28 
+               bg-gradient-to-br from-purple-500/20 to-pink-500/20 
+               rounded-xl shadow-lg backdrop-blur-sm border border-white/20"
+      initial={{ scale: 1, opacity: 0 }}
+      animate={{ scale: 1.2, opacity: 1 }}
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.25)",
+      }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 250, damping: 15 }}
     >
-      <img src={img} alt={name} className="w-16 h-16 object-contain mb-1" />
-      <span className="text-sm text-center">{name}</span>
+      <motion.img
+        src={img}
+        alt={name}
+        className="w-36 h-36 object-contain drop-shadow-lg"
+        whileHover={{ rotate: 3, scale: 1.08 }}
+        transition={{ type: "spring", stiffness: 200 }}
+      />
+      <span className="text-sm text-center font-semibold text-gray-800 drop-shadow-sm">
+        {name}
+      </span>
     </motion.div>
   );
 }
@@ -48,14 +62,24 @@ function Droppable({ id, name, color, img }) {
   return (
     <motion.div
       ref={setNodeRef}
-      className={`${color} p-4 m-2 rounded min-h-[120px] flex flex-col items-center justify-center text-black font-bold text-lg`}
-      animate={{
-        filter: "none", 
+      className={`${color} p-4 m-3 rounded-xl min-h-[140px] 
+                 flex flex-col items-center justify-center 
+                 text-black font-bold text-lg shadow-lg border border-white/20`}
+      whileHover={{
+        scale: 1.03,
+        boxShadow: "0px 12px 30px rgba(0,0,0,0.2)",
       }}
-      transition={{ duration: 0.3 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 200, damping: 15 }}
     >
-      <img src={img} alt={`${name} container`} className="w-24 h-24 mb-2" />
-      {name}
+      <motion.img
+        src={img}
+        alt={`${name} container`}
+        className="w-24 h-24 mb-1 drop-shadow-md"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 200 }}
+      />
+      <span className="drop-shadow-sm">{name}</span>
     </motion.div>
   );
 }
@@ -66,7 +90,7 @@ export default function GameComp() {
   const [message, setMessage] = useState("");
   const [corrects, setCorrects] = useState(0);
   const [placedResidues, setPlacedResidues] = useState([]);
-  const [gameOver, setGameOver] = useState(false); 
+  const [gameOver, setGameOver] = useState(false);
   const navigate = useNavigate();
 
   // Nivel actual
@@ -188,9 +212,7 @@ export default function GameComp() {
       </div>
 
       <AnimatePresence>
-        {gameOver && (
-          <GameOver onRestart={handleRestart} onHome={handleHome} />
-        )}
+        {gameOver && <GameOver onRestart={handleRestart} onHome={handleHome} />}
       </AnimatePresence>
     </div>
   );
