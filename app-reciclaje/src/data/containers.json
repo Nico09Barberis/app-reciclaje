@@ -1,8 +1,8 @@
 [
-  { "id": "plastic", "name": "Plastic", "img": "/images/container-yellow.png" },
-  { "id": "paper", "name": "Paper", "img": "/images/container-blue.png" },
-  { "id": "non-recyclable", "name": "Non-Recyclable", "img": "/images/container-red.png" },
-  { "id": "hazardous", "name": "Hazardous", "img": "/images/container-grey.png" },
-  { "id": "glass", "name": "Glass", "img": "/images/container-green.png" },
-  { "id": "organic", "name": "Organic", "img": "/images/container-brown.png" }
+  { "id": "plastic", "name": "Plastic", "img": "/images/containers/plastic.png" },
+  { "id": "paper", "name": "Paper", "img": "/images/containers/paper.png" },
+  { "id": "non-recyclable", "name": "Non-Recyclable", "img": "/images/containers/non-recyclable.png" },
+  { "id": "hazardous", "name": "Hazardous", "img": "/images/containers/hazardous.png" },
+  { "id": "glass", "name": "Glass", "img": "/images/containers/glass.png" },
+  { "id": "organic", "name": "Organic", "img": "/images/containers/organic.png" }
 ]
