@@ -6,13 +6,13 @@ import TipsFlip from "./TipsFlip";
 const Info = () => {
   return (
     <div className="px-4 py-8 max-w-6xl mx-auto font-sans">
-      {/* Introducción renovada */}
+      {/* Introducción renovada con movimiento */}
       <section className="mb-16 text-center animate-fadeIn px-6 md:px-0">
         <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-800 tracking-wide">
           ♻️ Guía práctica para clasificar residuos
         </h1>
 
-        <p className="text-gray-700 max-w-xl mx-auto text-lg mb-8 leading-relaxed">
+        <p className="text-gray-700 max-w-xl mx-auto text-lg my-12 leading-relaxed">
           La correcta clasificación de residuos es el primer paso para cuidar el
           medio ambiente y fomentar la economía circular.
           <em>
@@ -22,37 +22,55 @@ const Info = () => {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
-          <div className="flex-1 bg-green-50 p-6 rounded-lg shadow-md border border-green-200">
-            <h3 className="text-green-700 font-semibold mb-2">
-              ¿Por qué clasificar?
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Separar los residuos permite que materiales como vidrio, papel y
-              plástico puedan ser reciclados y reutilizados, evitando que
-              terminen contaminando ríos y suelos.
-            </p>
-          </div>
-
-          <div className="flex-1 bg-green-50 p-6 rounded-lg shadow-md border border-green-200">
-            <h3 className="text-green-700 font-semibold mb-2">
-              Impacto ambiental
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Cada kilo de residuos reciclados reduce la emisión de gases de
-              efecto invernadero y ayuda a preservar la biodiversidad.
-            </p>
-          </div>
-
-          <div className="flex-1 bg-green-50 p-6 rounded-lg shadow-md border border-green-200">
-            <h3 className="text-green-700 font-semibold mb-2">
-              Tu aporte cuenta
-            </h3>
-            <p className="text-gray-600 text-sm">
-              No es necesario ser perfecto, sino constante. Pequeñas acciones
-              suman para un futuro más limpio y saludable.
-            </p>
-          </div>
+          {[
+            {
+              title: "¿Por qué clasificar?",
+              text: "Separar los residuos permite que materiales como vidrio, papel y plástico puedan ser reciclados y reutilizados, evitando que terminen contaminando ríos y suelos.",
+            },
+            {
+              title: "Impacto ambiental",
+              text: "Cada kilo de residuos reciclados reduce la emisión de gases de efecto invernadero y ayuda a preservar la biodiversidad.",
+            },
+            {
+              title: "Tu aporte cuenta",
+              text: "No es necesario ser perfecto, sino constante. Pequeñas acciones suman para un futuro más limpio y saludable.",
+            },
+          ].map(({ title, text }, i) => (
+            <div
+              key={title}
+              className={`flex-1 bg-green-50 p-6 rounded-lg border border-green-200 shadow-md transform transition-transform duration-300 
+          opacity-0 translate-y-6 animate-fadeInUp`}
+              style={{
+                animationDelay: `${i * 200}ms`,
+                animationFillMode: "forwards",
+              }}
+              onMouseEnter={(e) =>
+                e.currentTarget.classList.add("scale-105", "shadow-xl")
+              }
+              onMouseLeave={(e) =>
+                e.currentTarget.classList.remove("scale-105", "shadow-xl")
+              }
+            >
+              <h3 className="text-green-700 font-semibold mb-2">{title}</h3>
+              <p className="text-gray-600 text-sm">{text}</p>
+            </div>
+          ))}
         </div>
+
+        <style jsx>{`
+          @keyframes fadeInUp {
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fadeInUp {
+            animation-name: fadeInUp;
+            animation-duration: 500ms;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+          }
+        `}</style>
       </section>
 
       {/* Contenedores horizontales */}
@@ -146,16 +164,6 @@ const Info = () => {
 
       {/* Consejos prácticos */}
       <section className="mt-16 animate-fadeIn delay-200">
-        <h2 className="text-3xl font-bold mb-5 text-green-700">
-          💡 Consejos Prácticos
-        </h2>
-        <ul className="list-disc list-inside text-gray-800 space-y-2 text-lg">
-          <li>🧼 Limpia los envases antes de reciclar.</li>
-          <li>🚫 No mezcles residuos peligrosos con reciclables.</li>
-          <li>♻️ Aplasta botellas y cajas para ahorrar espacio.</li>
-          <li>📦 Retira etiquetas si es posible.</li>
-        </ul>
-
         <TipsFlip />
       </section>
 
