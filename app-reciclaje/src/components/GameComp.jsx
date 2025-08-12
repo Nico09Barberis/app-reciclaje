@@ -50,11 +50,11 @@ function Droppable({ id, name, color, img }) {
       ref={setNodeRef}
       className={`${color} p-4 m-2 rounded min-h-[120px] flex flex-col items-center justify-center text-black font-bold text-lg`}
       animate={{
-        filter: "none", // quitar cualquier filtro, sombra incluida
+        filter: "none", 
       }}
       transition={{ duration: 0.3 }}
     >
-      <img src={img} alt={`${name} container`} className="w-12 h-12 mb-2" />
+      <img src={img} alt={`${name} container`} className="w-24 h-24 mb-2" />
       {name}
     </motion.div>
   );
