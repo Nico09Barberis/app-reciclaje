@@ -1,7 +1,7 @@
 [
   { "id": "plastic", "name": "Plastic", "color": "bg-yellow-400", "img": "/images/container-yellow.png" },
   { "id": "paper", "name": "Paper", "color": "bg-blue-400", "img": "/images/container-blue.png" },
-  { "id": "non-recyclable", "name": "Non-Recyclable", "color": "bg-gray-400", "img": "/images/container-red.png" },
+  { "id": "non-recyclable", "name": "Non-Recyclable", "color": "bg-white", "img": "/images/container-red.png" },
   { "id": "hazardous", "name": "Hazardous", "color": "bg-red-600", "img": "/images/container-grey.png" },
   { "id": "glass", "name": "Glass", "color": "bg-green-400", "img": "/images/container-green.png" },
   { "id": "organic", "name": "Organic", "color": "bg-amber-700", "img": "/images/container-brown.png" }

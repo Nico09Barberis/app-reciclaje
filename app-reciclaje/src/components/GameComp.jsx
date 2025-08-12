@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import residuesData from "../data/residues.json";
 import containersData from "../data/containers.json";
+import GameOver from "./GameOver";
 import levelsData from "../data/levels.json";
 import {
   DndContext,
@@ -12,6 +13,7 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function Draggable({ id, name, img }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
@@ -41,7 +43,7 @@ function Draggable({ id, name, img }) {
 }
 
 function Droppable({ id, name, color, img }) {
-  const { setNodeRef, isOver } = useDroppable({ id });
+  const { setNodeRef } = useDroppable({ id });
 
   return (
     <motion.div
@@ -58,20 +60,25 @@ function Droppable({ id, name, color, img }) {
   );
 }
 
+
 export default function GameComp() {
   const [level, setLevel] = useState(1);
   const [message, setMessage] = useState("");
   const [corrects, setCorrects] = useState(0);
   const [placedResidues, setPlacedResidues] = useState([]);
+  const [gameOver, setGameOver] = useState(false); 
+  const navigate = useNavigate();
 
-  // Buscar el nivel actual
+  // Nivel actual
   const currentLevel = levelsData.find((l) => l.id === level);
 
-   // Filtrar residuos, excluyendo los ya colocados
+  // Filtrar residuos excluyendo colocados
   const residues =
     currentLevel && currentLevel.residues
       ? residuesData.filter(
-          (r) => currentLevel.residues.includes(r.id) && !placedResidues.includes(r.id)
+          (r) =>
+            currentLevel.residues.includes(r.id) &&
+            !placedResidues.includes(r.id)
         )
       : [];
 
@@ -85,10 +92,12 @@ export default function GameComp() {
   );
 
   const handleDragEnd = (event) => {
+    if (gameOver) return; // bloqueo si el juego terminó
+
     const { active, over } = event;
     if (!over) return setMessage("Drop the object on a container");
 
-    const item = residuesData.find((r) => r.id === active.id); // ojo, buscar en todos los residuos para evitar que no encuentre
+    const item = residuesData.find((r) => r.id === active.id);
     const container = containers.find((c) => c.id === over.id);
 
     if (!item || !container) return;
@@ -99,7 +108,6 @@ export default function GameComp() {
       setCorrects((c) => {
         const newCount = c + 1;
 
-        // Agrego el residuo a la lista de colocados
         setPlacedResidues((prev) => [...prev, item.id]);
 
         if (newCount >= (currentLevel?.goal || Infinity)) {
@@ -107,10 +115,12 @@ export default function GameComp() {
             if (level < levelsData.length) {
               setLevel(level + 1);
               setCorrects(0);
-              setPlacedResidues([]); // limpiar residuos colocados para nuevo nivel
+              setPlacedResidues([]);
               setMessage(`🌟 Level ${level + 1}`);
             } else {
-              setMessage("🎉 Game completed!");
+              // Aquí activamos el GameOver
+              setGameOver(true);
+              setMessage("");
             }
           }, 1000);
         }
@@ -121,8 +131,20 @@ export default function GameComp() {
     }
   };
 
+  const handleRestart = () => {
+    setLevel(1);
+    setCorrects(0);
+    setPlacedResidues([]);
+    setGameOver(false);
+    setMessage("");
+  };
+
+  const handleHome = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="p-4 min-h-screen bg-green-50">
+    <div className="p-4 min-h-screen bg-green-50 relative">
       <h2 className="text-2xl font-bold mb-4 text-center">
         Sort the waste - Level {level}
       </h2>
@@ -133,9 +155,10 @@ export default function GameComp() {
         onDragEnd={handleDragEnd}
       >
         <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {residues.map(({ id, name, img }) => (
-            <Draggable key={id} id={id} name={name} img={img} />
-          ))}
+          {!gameOver &&
+            residues.map(({ id, name, img }) => (
+              <Draggable key={id} id={id} name={name} img={img} />
+            ))}
         </div>
 
         <div className="flex flex-wrap justify-center gap-4">
@@ -145,8 +168,8 @@ export default function GameComp() {
         </div>
       </DndContext>
 
-      <AnimatePresence mode="wait">
-        {message && (
+      <AnimatePresence>
+        {message && !gameOver && (
           <motion.div
             key={message}
             initial={{ opacity: 0, y: 10 }}
@@ -163,6 +186,12 @@ export default function GameComp() {
       <div className="mt-2 text-center text-green-700 font-bold">
         Score: {corrects} / {currentLevel?.goal || "?"}
       </div>
+
+      <AnimatePresence>
+        {gameOver && (
+          <GameOver onRestart={handleRestart} onHome={handleHome} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
