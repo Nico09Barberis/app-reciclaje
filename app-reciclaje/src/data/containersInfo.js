@@ -1,34 +1,51 @@
+// src/data/containersInfo.js
 export const containersInfo = [
   {
-    id: "plastic",
-    name: "Plástico y Envases",
+    id: 1,
+    name: "Plástico",
     color: "bg-yellow-400",
-    img: "/images/container-yellow.png",
-    yes: ["Botellas de plástico", "Tapas", "Envases de yogur", "Bolsas limpias"],
-    no: ["Envases sucios con comida", "Plásticos biodegradables", "Juguetes rotos"]
+    img: "/images/containers/plastic.png",
+    yes: ["Botellas de plástico", "Tapas", "Envases de bebidas"],
+    no: ["Plásticos sucios", "Juguetes", "Cubiertos descartables"],
   },
   {
-    id: "paper",
+    id: 2,
     name: "Papel y Cartón",
     color: "bg-blue-400",
-    img: "/images/container-blue.png",
-    yes: ["Hojas de papel", "Cajas de cartón", "Revistas"],
-    no: ["Papel sucio", "Servilletas usadas", "Cartón con grasa"]
+    img: "/images/containers/paper.png",
+    yes: ["Diarios", "Revistas", "Cajas limpias"],
+    no: ["Papel mojado", "Servilletas usadas", "Cartón con grasa"],
   },
   {
-    id: "glass",
+    id: 3,
     name: "Vidrio",
-    color: "bg-green-400",
-    img: "/images/container-green.png",
-    yes: ["Botellas de vidrio", "Frascos", "Tarros"],
-    no: ["Vidrio roto peligroso", "Cerámica", "Espejos"]
+    color: "bg-green-500",
+    img: "/images/containers/glass.png",
+    yes: ["Botellas de vidrio", "Frascos"],
+    no: ["Vidrios rotos peligrosos", "Espejos", "Cerámica"],
   },
   {
-    id: "organic",
-    name: "Orgánico",
-    color: "bg-amber-700",
-    img: "/images/container-brown.png",
-    yes: ["Restos de comida", "Cáscaras de fruta", "Hojas y ramas"],
-    no: ["Plásticos", "Metales", "Vidrio"]
+    id: 4,
+    name: "Metales",
+    color: "bg-gray-400",
+    img: "/images/containers/metal.png",
+    yes: ["Latas de aluminio", "Latas de conserva", "Tapas metálicas"],
+    no: ["Objetos oxidados", "Cables", "Electrodomésticos"],
+  },
+  {
+    id: 5,
+    name: "No Reciclable",
+    color: "bg-gray-700",
+    img: "/images/containers/non-recyclable.png",
+    yes: ["Pañales", "Colillas de cigarro", "Papel higiénico usado"],
+    no: ["Materiales reciclables limpios", "Residuos peligrosos"],
+  },
+  {
+    id: 6,
+    name: "Residuos Peligrosos",
+    color: "bg-red-600",
+    img: "/images/containers/hazardous.png",
+    yes: ["Baterías", "Aceites", "Pinturas", "Medicamentos vencidos"],
+    no: ["Residuos comunes", "Reciclables"],
   }
 ];
