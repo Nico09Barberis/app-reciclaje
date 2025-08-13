@@ -183,13 +183,24 @@ export default function GameComp() {
   return (
     <div className="p-4 min-h-screen bg-green-50 relative">
       <h2
-        className="text-3xl font-extrabold mb-6 text-center 
+        className="text-3xl font-extrabold mb-4 text-center 
              bg-gradient-to-r from-emerald-500 to-green-700 
              bg-clip-text text-transparent 
              drop-shadow-md tracking-wide animate-fadeIn"
       >
         Clasifica la basura – Nivel {level}
       </h2>
+
+      <p
+        className="max-w-xl mx-auto mb-8 text-lg text-center text-gray-700 
+             bg-white/70 backdrop-blur-sm rounded-lg p-4 shadow-md 
+             leading-relaxed animate-fadeIn delay-200"
+      >
+        ♻️ <span className="font-semibold">Cómo jugar:</span> Arrastra cada
+        residuo hacia el contenedor correcto. Si te equivocas, no pasa nada —
+        ¡puedes intentarlo de nuevo hasta lograrlo! 🎯 La meta es clasificar
+        todos los elementos correctamente.
+      </p>
 
       <DndContext
         sensors={sensors}
