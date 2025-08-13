@@ -15,7 +15,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-function Draggable({ id, name, img }) {
+export function Draggable({ id, name, img }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({ id });
 
@@ -26,48 +26,62 @@ function Draggable({ id, name, img }) {
         transform: transform
           ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
           : undefined,
-        opacity: isDragging ? 0.5 : 1,
+        opacity: isDragging ? 0.6 : 1,
       }}
       {...listeners}
       {...attributes}
       className="p-4 m-3 cursor-grab select-none flex flex-col items-center w-28 
-               bg-gradient-to-br from-purple-500/20 to-pink-500/20 
-               rounded-xl shadow-lg backdrop-blur-sm border border-white/20"
-      initial={{ scale: 1, opacity: 0 }}
-      animate={{ scale: 1.2, opacity: 1 }}
+                 bg-gradient-to-br from-purple-500/30 to-pink-500/30 
+                 rounded-2xl shadow-lg backdrop-blur-md border border-white/20
+                 transition-all duration-200"
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
       whileHover={{
-        scale: 1.05,
-        boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.25)",
+        scale: 1.07,
+        boxShadow: "0px 12px 28px rgba(0, 0, 0, 0.25)",
       }}
       whileTap={{ scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 250, damping: 15 }}
+      transition={{ type: "spring", stiffness: 250, damping: 18 }}
     >
       <motion.img
         src={img}
         alt={name}
-        className="w-36 h-36 object-contain drop-shadow-lg"
-        whileHover={{ rotate: 3, scale: 1.08 }}
+        className="w-24 h-24 object-contain drop-shadow-lg"
+        whileHover={{ rotate: 3, scale: 1.1 }}
         transition={{ type: "spring", stiffness: 200 }}
       />
-      <span className="text-sm text-center font-semibold text-gray-800 drop-shadow-sm">
+      <span className="text-sm text-center font-semibold text-gray-900 drop-shadow-sm mt-2">
         {name}
       </span>
     </motion.div>
   );
 }
 
-function Droppable({ id, name, color, img }) {
-  const { setNodeRef } = useDroppable({ id });
+export function Droppable({ id, name, color, img }) {
+  const { setNodeRef, isOver } = useDroppable({ id });
 
   return (
     <motion.div
       ref={setNodeRef}
-      className={`${color} p-4 m-3 rounded-xl min-h-[140px] 
-                 flex flex-col items-center justify-center 
-                 text-black font-bold text-lg shadow-lg border border-white/20`}
+      className={`p-5 m-3 rounded-2xl min-h-[160px] w-40
+                  flex flex-col items-center justify-center gap-2
+                  shadow-lg border border-white/20 
+                  ${color} transition-all duration-300`}
+      style={{
+        background: isOver
+          ? "linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.2))"
+          : undefined,
+        backdropFilter: "blur(12px)",
+      }}
+      animate={{
+        scale: isOver ? 1.05 : 1,
+        boxShadow: isOver
+          ? "0px 15px 30px rgba(0,0,0,0.25)"
+          : "0px 8px 20px rgba(0,0,0,0.15)",
+      }}
       whileHover={{
         scale: 1.03,
-        boxShadow: "0px 12px 30px rgba(0,0,0,0.2)",
+        boxShadow: "0px 14px 28px rgba(0,0,0,0.2)",
       }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
@@ -75,15 +89,14 @@ function Droppable({ id, name, color, img }) {
       <motion.img
         src={img}
         alt={`${name} container`}
-        className="w-24 h-24 mb-1 drop-shadow-md"
-        whileHover={{ scale: 1.05 }}
+        className="w-20 h-20 drop-shadow-md"
+        whileHover={{ scale: 1.08 }}
         transition={{ type: "spring", stiffness: 200 }}
       />
-      <span className="drop-shadow-sm">{name}</span>
+      <span className="font-semibold text-gray-900 drop-shadow-sm">{name}</span>
     </motion.div>
   );
 }
-
 
 export default function GameComp() {
   const [level, setLevel] = useState(1);
@@ -169,8 +182,13 @@ export default function GameComp() {
 
   return (
     <div className="p-4 min-h-screen bg-green-50 relative">
-      <h2 className="text-2xl font-bold mb-4 text-center">
-        Sort the waste - Level {level}
+      <h2
+        className="text-3xl font-extrabold mb-6 text-center 
+             bg-gradient-to-r from-emerald-500 to-green-700 
+             bg-clip-text text-transparent 
+             drop-shadow-md tracking-wide animate-fadeIn"
+      >
+        Clasifica la basura – Nivel {level}
       </h2>
 
       <DndContext
@@ -207,8 +225,23 @@ export default function GameComp() {
         )}
       </AnimatePresence>
 
-      <div className="mt-2 text-center text-green-700 font-bold">
-        Score: {corrects} / {currentLevel?.goal || "?"}
+      <div className="flex flex-col items-center justify-center my-12">
+        <div
+          className="px-6 py-4 rounded-lg bg-gradient-to-r from-green-400 to-emerald-600 shadow-lg 
+               text-white font-extrabold text-lg tracking-wide transform transition-all duration-300 
+               hover:scale-105 text-center"
+        >
+          <span className="block text-lg opacity-80">Puntuación actual</span>
+          <span
+            className={`text-3xl ${
+              corrects >= (currentLevel?.goal || 0)
+                ? "animate-bounce"
+                : "animate-pulse"
+            }`}
+          >
+            {corrects} / {currentLevel?.goal || "?"}
+          </span>
+        </div>
       </div>
 
       <AnimatePresence>
