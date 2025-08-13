@@ -14,24 +14,27 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-gray-900 shadow-lg shadow-green-900/40">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo / Title */}
-          <Link to="/" className="text-2xl font-bold text-green-600">
+          <Link
+            to="/"
+            className="text-2xl font-extrabold text-green-400 hover:text-green-300 transition-colors"
+          >
             ♻ EcoGame
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="relative group text-gray-700 hover:text-green-600 transition"
+                className="relative group text-gray-300 hover:text-green-400 transition-colors"
               >
                 {link.label}
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-green-600 transition-all group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </div>
@@ -39,7 +42,7 @@ const Navbar = () => {
           {/* Mobile Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-gray-700 hover:text-green-600 transition"
+            className="md:hidden text-gray-300 hover:text-green-400 transition"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -47,13 +50,13 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden flex flex-col space-y-4 pb-4">
+          <div className="md:hidden flex flex-col space-y-4 pb-4 animate-fadeIn">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                className="text-gray-700 hover:text-green-600 transition"
+                className="text-gray-300 hover:text-green-400 transition-colors"
               >
                 {link.label}
               </Link>
