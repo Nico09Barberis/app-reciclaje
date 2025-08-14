@@ -20,7 +20,7 @@ const Navbar = () => {
           {/* Logo / Title */}
           <Link
             to="/"
-            className="text-2xl font-extrabold text-green-400 hover:text-green-300 transition-colors"
+            className="text-2xl font-extrabold text-[#26B75A] hover:text-green-300 transition-colors"
           >
             ♻ EcoGame
           </Link>
@@ -31,7 +31,7 @@ const Navbar = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className="relative group text-gray-300 hover:text-green-400 transition-colors"
+                className="relative group text-gray-300 hover:text-[#26B75A] transition-colors"
               >
                 {link.label}
                 <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"></span>
@@ -42,7 +42,7 @@ const Navbar = () => {
           {/* Mobile Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-gray-300 hover:text-green-400 transition"
+            className="md:hidden text-gray-300 hover:text-[#26B75A] transition"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -56,7 +56,7 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-green-400 transition-colors"
+                className="text-gray-300 hover:text-[#26B75A] transition-colors"
               >
                 {link.label}
               </Link>

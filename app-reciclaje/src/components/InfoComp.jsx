@@ -9,11 +9,11 @@ const Info = () => {
       <div className="px-4 py-8 max-w-6xl mx-auto font-sans">
         <section className="text-gray-200 py-16 px-6">
           <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-green-400 mb-6">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#26B75A] mb-6">
               La importancia de separar los residuos correctamente
             </h2>
 
-            <p className="text-lg md:text-xl leading-relaxed mb-6 text-gray-300">
+            <p className="text-lg md:text-xl leading-relaxed mb-6 text-gray-300 font-light">
               Separar los residuos no es solo una tarea doméstica: es un acto de
               responsabilidad con el planeta. Al clasificar correctamente la
               basura, reducimos la contaminación, facilitamos el reciclaje y
@@ -22,7 +22,7 @@ const Info = () => {
               más limpio y sostenible.
             </p>
 
-            <p className="text-lg md:text-xl leading-relaxed mb-6 text-gray-300">
+            <p className="text-lg md:text-xl leading-relaxed mb-6 text-gray-300 font-light">
               Cuando los residuos se mezclan, gran parte del material reciclable
               se pierde, aumentando la cantidad de basura que termina en
               vertederos e incineradoras. Esto no solo degrada el medio
@@ -30,7 +30,7 @@ const Info = () => {
               invernadero que afectan directamente al clima.
             </p>
 
-            <p className="text-lg md:text-xl leading-relaxed text-gray-300">
+            <p className="text-lg md:text-xl leading-relaxed text-gray-300 font-light">
               En cambio, al separar de forma adecuada, damos una segunda vida a
               muchos materiales, reducimos el consumo de recursos vírgenes y
               ayudamos a construir comunidades más sostenibles. Un gesto tan
@@ -42,7 +42,7 @@ const Info = () => {
 
         {/* Introducción renovada con movimiento */}
         <section className="mb-16 text-center animate-fadeIn px-6 md:px-0">
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-green-400 tracking-wide">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-3 text-[#26B75A] tracking-wide">
             Guía práctica para clasificar residuos
           </h2>
 
@@ -84,7 +84,9 @@ const Info = () => {
                 <h3 className="text-2xl md:text-3xl font-extrabold mb-4">
                   {title}
                 </h3>
-                <p className="text-md md:text-md font-semibold leading-relaxed">{text}</p>
+                <p className="text-md md:text-md font-semibold leading-relaxed">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
@@ -107,6 +109,31 @@ const Info = () => {
 
         {/* Contenedores horizontales */}
         <section className="flex flex-col gap-8 px-6 py-8 max-w-5xl mx-auto">
+          <div className="px-6 font-light text-center">
+            <h2 className="text-3xl font-bold text-[#26B75A] mb-6">
+              Cómo Separar los Residuos Correctamente
+            </h2>
+            <p className="text-gray-200 text-lg mb-4">
+              Separar los residuos de manera adecuada es clave para proteger el
+              medio ambiente y fomentar el reciclaje. Cada tipo de residuo
+              requiere un manejo específico para que pueda ser tratado
+              correctamente.
+            </p>
+            <p className="text-gray-200 text-lg mb-4">
+              Los residuos se pueden clasificar principalmente en:{" "}
+              <strong>plasticos</strong>,<strong> papel y carton</strong>,{" "}
+              <strong>vidrio</strong>, <strong>organico</strong>, {" "}
+              <strong>no reciclables</strong> y <strong>peligrosos</strong>.
+              Conocer estas categorías y depositar cada residuo en su contenedor
+              correspondiente ayuda a reducir la contaminación y aprovechar
+              mejor los recursos.
+            </p>
+            <p className="text-gray-200 text-lg">
+              Esta guía te enseñará de manera sencilla cómo identificar cada
+              tipo de residuo y los pasos básicos para separarlos correctamente
+              en tu hogar o lugar de trabajo.
+            </p>
+          </div>
           {containersInfo.map((c) => (
             <div
               key={c.id}
@@ -190,7 +217,7 @@ const Info = () => {
           {/* Contenido */}
           <div className="relative z-10 text-center px-6 max-w-3xl">
             <h2 className="text-5xl md:text-6xl font-extrabold tracking-wide text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)] animate-slideUp">
-              Pequeñas <span className="text-green-400">acciones</span>,
+              Pequeñas <span className="text-[#26B75A]">acciones</span>,
               <span className="text-yellow-400"> gran impacto</span>
             </h2>
             <p className="mt-4 text-lg md:text-2xl text-gray-200/90 font-medium animate-slideUp delay-200">

@@ -135,7 +135,7 @@ export default function FAQ() {
                 <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                   {isOpen ? (
                     <svg
-                      className="w-6 h-6 text-green-600"
+                      className="w-6 h-6 text-[#26B75A]"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"

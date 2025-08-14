@@ -24,7 +24,7 @@ const tips = [
 export default function TipsFlip() {
   return (
     <section className="max-w-5xl mx-auto p-6">
-      <h2 className="text-3xl font-extrabold text-green-400 mb-8 text-center">
+      <h2 className="text-3xl font-extrabold text-[#26B75A] mb-8 text-center">
         💡 Tips verdes para tu día a día 
       </h2>
 
