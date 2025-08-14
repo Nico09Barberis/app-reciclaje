@@ -1,51 +1,51 @@
 [
   {
     "id": "plastic1",
-    "name": "botella de plastico",
+    "name": "Botella de plastico",
     "category": "plastic",
     "img": "/images/residues/botella-agua.png"
   },
   {
     "id": "paper1",
-    "name": "sobre",
+    "name": "Sobre",
     "category": "paper",
     "img": "/images/residues/sobre.png"
   },
   {
     "id": "nonRecyclable1",
-    "name": "pilas y baterias",
+    "name": "Pilas y baterias",
     "category": "non-recyclable",
     "img": "/images/residues/pilas-baterias.png"
   },
 
   {
     "id": "plastic2",
-    "name": "tapas de botella",
+    "name": "Tapas de botella",
     "category": "plastic",
     "img": "/images/residues/tapas-botellas.png"
   },
   {
     "id": "nonRecyclable2",
-    "name": "pañal usado",
+    "name": "Pañal usado",
     "category": "non-recyclable",
     "img": "/images/residues/pañal.png"
   },
   {
     "id": "organic2",
-    "name": "cascara de huevo",
+    "name": "Cascara de huevo",
     "category": "organic",
     "img": "/images/residues/cascara-huevo.png"
   },
   {
     "id": "glass2",
-    "name": "frasco",
+    "name": "Frasco",
     "category": "glass",
     "img": "/images/residues/frasco.png"
   },
 
   {
     "id": "paper3",
-    "name": "revistas",
+    "name": "Revistas",
     "category": "paper",
     "img": "/images/residues/revistas.png"
   },
@@ -71,7 +71,7 @@
 
   {
     "id": "paper4",
-    "name": "libros",
+    "name": "Libros",
     "category": "paper",
     "img": "/images/residues/libros.png"
   },
@@ -95,14 +95,14 @@
   },
    {
     "id": "plastic4",
-    "name": "cajas de cd",
+    "name": "Cajas de cd",
     "category": "plastic",
     "img": "/images/residues/cajas-cd.png"
   },
 
   {
     "id": "paper5",
-    "name": "caja de carton",
+    "name": "Caja de carton",
     "category": "paper",
     "img": "/images/residues/caja-carton.png"
   },

@@ -1,8 +1,8 @@
 [
-  { "id": "plastic", "name": "Plastic", "img": "/images/containers/plastic.png" },
-  { "id": "paper", "name": "Paper", "img": "/images/containers/paper.png" },
-  { "id": "non-recyclable", "name": "Non-Recyclable", "img": "/images/containers/non-recyclable.png" },
-  { "id": "hazardous", "name": "Hazardous", "img": "/images/containers/hazardous.png" },
-  { "id": "glass", "name": "Glass", "img": "/images/containers/glass.png" },
-  { "id": "organic", "name": "Organic", "img": "/images/containers/organic.png" }
+  { "id": "plastic", "name": "Plastico", "img": "/images/containers/plastic.png" },
+  { "id": "paper", "name": "Papel", "img": "/images/containers/paper.png" },
+  { "id": "non-recyclable", "name": "No reciclable", "img": "/images/containers/non-recyclable.png" },
+  { "id": "hazardous", "name": "Peligroso", "img": "/images/containers/hazardous.png" },
+  { "id": "glass", "name": "Vidrio", "img": "/images/containers/glass.png" },
+  { "id": "organic", "name": "Organico", "img": "/images/containers/organic.png" }
 ]

@@ -50,7 +50,7 @@ export function Draggable({ id, name, img }) {
         whileHover={{ rotate: 3, scale: 1.1 }}
         transition={{ type: "spring", stiffness: 200 }}
       />
-      <span className="text-sm text-center font-semibold text-gray-900 drop-shadow-sm mt-2">
+      <span className=" text-center font-semibold text-gray-300 drop-shadow-sm mt-2">
         {name}
       </span>
     </motion.div>
@@ -63,7 +63,7 @@ export function Droppable({ id, name, color, img }) {
   return (
     <motion.div
       ref={setNodeRef}
-      className={`p-5 m-3 rounded-2xl min-h-[160px] w-40
+      className={`p-5 mt-10 m-3 rounded-2xl min-h-[160px] w-40
                   flex flex-col items-center justify-center gap-2
                   shadow-lg border border-white/20 
                   ${color} transition-all duration-300`}
@@ -93,7 +93,7 @@ export function Droppable({ id, name, color, img }) {
         whileHover={{ scale: 1.08 }}
         transition={{ type: "spring", stiffness: 200 }}
       />
-      <span className="font-semibold text-gray-900 drop-shadow-sm">{name}</span>
+      <span className="font-semibold text-gray-300 drop-shadow-sm">{name}</span>
     </motion.div>
   );
 }
@@ -132,7 +132,7 @@ export default function GameComp() {
     if (gameOver) return; // bloqueo si el juego terminó
 
     const { active, over } = event;
-    if (!over) return setMessage("Drop the object on a container");
+    if (!over) return setMessage("Dejar caer el objeto sobre un contenedor");
 
     const item = residuesData.find((r) => r.id === active.id);
     const container = containers.find((c) => c.id === over.id);
@@ -140,7 +140,7 @@ export default function GameComp() {
     if (!item || !container) return;
 
     if (item.category === container.id) {
-      setMessage(`✅ Correct! ${item.name} goes in ${container.name}`);
+      setMessage(`✅ Correcto! ${item.name} va en ${container.name}`);
 
       setCorrects((c) => {
         const newCount = c + 1;
@@ -164,7 +164,7 @@ export default function GameComp() {
         return newCount;
       });
     } else {
-      setMessage(`❌ ${item.name} does NOT go in ${container.name}`);
+      setMessage(`❌ ${item.name} no va en ${container.name}`);
     }
   };
 
@@ -181,7 +181,7 @@ export default function GameComp() {
   };
 
   return (
-    <div className="p-4 min-h-screen bg-green-50 relative">
+    <div className="p-4 min-h-screen bg-[#181F2A] relative">
       <h2
         className="text-3xl font-extrabold mb-4 text-center 
              bg-gradient-to-r from-emerald-500 to-green-700 
@@ -229,7 +229,7 @@ export default function GameComp() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-            className="mt-8 text-center font-semibold text-lg"
+            className="mt-8 text-gray-300 text-center font-semibold text-lg"
           >
             {message}
           </motion.div>

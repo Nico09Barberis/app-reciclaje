@@ -113,13 +113,13 @@ const Info = () => {
             <h2 className="text-3xl font-bold text-[#26B75A] mb-6">
               Cómo Separar los Residuos Correctamente
             </h2>
-            <p className="text-gray-200 text-lg mb-4">
+            <p className="text-gray-200 text-lg md:text-xl mb-4">
               Separar los residuos de manera adecuada es clave para proteger el
               medio ambiente y fomentar el reciclaje. Cada tipo de residuo
               requiere un manejo específico para que pueda ser tratado
               correctamente.
             </p>
-            <p className="text-gray-200 text-lg mb-4">
+            <p className="text-gray-200 text-lg md:text-xl mb-4">
               Los residuos se pueden clasificar principalmente en:{" "}
               <strong>plasticos</strong>,<strong> papel y carton</strong>,{" "}
               <strong>vidrio</strong>, <strong>organico</strong>, {" "}
@@ -128,7 +128,7 @@ const Info = () => {
               correspondiente ayuda a reducir la contaminación y aprovechar
               mejor los recursos.
             </p>
-            <p className="text-gray-200 text-lg">
+            <p className="text-gray-200 text-lg md:text-xl mb-4">
               Esta guía te enseñará de manera sencilla cómo identificar cada
               tipo de residuo y los pasos básicos para separarlos correctamente
               en tu hogar o lugar de trabajo.

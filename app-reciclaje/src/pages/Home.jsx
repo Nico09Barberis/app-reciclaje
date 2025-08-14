@@ -15,10 +15,10 @@ export default function Home() {
 
       {/* Contenido */}
       <div className="relative z-10 max-w-xl text-left text-white">
-        <h1 className="text-5xl font-extrabold mb-4">
-          Bienvenido al Clasificador de Reciclaje
+        <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
+          Bienvenido a reciclApp
         </h1>
-        <p className="text-lg mb-6">
+        <p className="text-lg md:text-xl mb-6">
           Aprende a clasificar los residuos correctamente y cuida el planeta de
           forma divertida.
         </p>
