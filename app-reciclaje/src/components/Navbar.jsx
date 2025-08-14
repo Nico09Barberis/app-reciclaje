@@ -56,7 +56,7 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-[#26B75A] transition-colors"
+                className="text-gray-300 hover:text-[#26B75A] uppercase tracking-wider font-semibold transition-colors"
               >
                 {link.label}
               </Link>
