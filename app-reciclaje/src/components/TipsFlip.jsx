@@ -36,14 +36,14 @@ export default function TipsFlip() {
           >
             <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
               {/* Frente */}
-              <div className="absolute w-full h-full backface-hidden bg-green-500 rounded-xl flex flex-col items-center justify-center p-4 shadow-lg">
+              <div className="absolute w-full h-full backface-hidden bg-[#26B75A] rounded-xl flex flex-col items-center justify-center p-4 shadow-lg">
                 <div className="text-6xl">{front}</div>
                 <h3 className="mt-4 text-xl font-bold text-gray-900">{title}</h3>
               </div>
 
               {/* Reverso */}
-              <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-green-700 rounded-xl flex items-center justify-center p-6 shadow-lg">
-                <p className="text-gray-200 text-center text-base">{back}</p>
+              <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-[#26B75A] rounded-xl flex items-center justify-center p-6 shadow-lg">
+                <p className="text-gray-900 font-semibold text-center text-base">{back}</p>
               </div>
             </div>
           </div>

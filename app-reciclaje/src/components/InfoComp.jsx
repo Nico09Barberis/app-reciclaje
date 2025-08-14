@@ -10,7 +10,7 @@ const Info = () => {
         <section className="text-gray-200 py-16 px-6">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-green-400 mb-6">
-              La importancia de separar los residuos correctamente ♻
+              La importancia de separar los residuos correctamente
             </h2>
 
             <p className="text-lg md:text-xl leading-relaxed mb-6 text-gray-300">
@@ -42,9 +42,9 @@ const Info = () => {
 
         {/* Introducción renovada con movimiento */}
         <section className="mb-16 text-center animate-fadeIn px-6 md:px-0">
-          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-400 tracking-wide">
-            ♻️ Guía práctica para clasificar residuos
-          </h1>
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-green-400 tracking-wide">
+            Guía práctica para clasificar residuos
+          </h2>
 
           <p className="text-gray-300 max-w-2xl mx-auto text-lg md:text-xl my-10 leading-relaxed font-light">
             La correcta clasificación de residuos es el primer paso para cuidar
@@ -60,33 +60,31 @@ const Info = () => {
               {
                 title: "¿Por qué clasificar?",
                 text: "Separar los residuos permite que materiales como vidrio, papel y plástico puedan ser reciclados y reutilizados, evitando que terminen contaminando ríos y suelos.",
+                color: "bg-yellow-200 text-yellow-900",
               },
               {
                 title: "Impacto ambiental",
                 text: "Cada kilo de residuos reciclados reduce la emisión de gases de efecto invernadero y ayuda a preservar la biodiversidad.",
+                color: "bg-green-200 text-green-900",
               },
               {
                 title: "Tu aporte cuenta",
                 text: "No es necesario ser perfecto, sino constante. Pequeñas acciones suman para un futuro más limpio y saludable.",
+                color: "bg-blue-200 text-blue-900",
               },
-            ].map(({ title, text }, i) => (
+            ].map(({ title, text, color }, i) => (
               <div
                 key={title}
-                className={`flex-1 bg-green-50 p-6 rounded-lg border border-green-200 shadow-md transform transition-transform duration-300 
-          opacity-0 translate-y-6 animate-fadeInUp`}
+                className={`${color} flex-1 p-8 rounded-2xl shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl opacity-0 translate-y-6 animate-fadeInUp`}
                 style={{
                   animationDelay: `${i * 200}ms`,
                   animationFillMode: "forwards",
                 }}
-                onMouseEnter={(e) =>
-                  e.currentTarget.classList.add("scale-105", "shadow-xl")
-                }
-                onMouseLeave={(e) =>
-                  e.currentTarget.classList.remove("scale-105", "shadow-xl")
-                }
               >
-                <h3 className="text-green-700 font-semibold mb-2">{title}</h3>
-                <p className="text-gray-600 text-sm">{text}</p>
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-4">
+                  {title}
+                </h3>
+                <p className="text-md md:text-md font-semibold leading-relaxed">{text}</p>
               </div>
             ))}
           </div>
@@ -112,13 +110,13 @@ const Info = () => {
           {containersInfo.map((c) => (
             <div
               key={c.id}
-              className="flex flex-col md:flex-row bg-[#1F2736] shadow-xl rounded-2xl overflow-hidden border border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:via-pink-500 hover:to-red-400 transform transition-all duration-500 hover:scale-[1.03] hover:shadow-3xl cursor-pointer"
+              className="flex flex-col md:flex-row bg-[#2b3547] shadow-xl rounded-2xl overflow-hidden border border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:via-pink-500 hover:to-red-400 transform transition-all duration-500 hover:scale-[1.03] hover:shadow-3xl cursor-pointer"
               style={{
                 backgroundImage: `linear-gradient(135deg, ${c.color}33 0%, #fff 100%)`,
               }}
             >
               {/* Imagen a la izquierda */}
-              <div className="md:flex-shrink-0 md:w-1/3 bg-[#1F2736] flex items-center justify-center p-6">
+              <div className="md:flex-shrink-0 md:w-1/3 bg-[#2b3547] flex items-center justify-center p-6">
                 <img
                   src={c.img}
                   alt={c.name}
@@ -139,7 +137,7 @@ const Info = () => {
 
                 {/* Qué sí va */}
                 <div className="mb-6">
-                  <p className="text-green-700 font-semibold mb-3 flex items-center gap-2 text-lg">
+                  <p className="text-[#26B75A] font-semibold mb-3 flex items-center gap-2 text-lg">
                     <span className="inline-block bg-green-300 text-green-800 rounded-full px-3 py-1 text-sm font-medium shadow-sm">
                       ✅ Qué sí va
                     </span>
@@ -182,7 +180,7 @@ const Info = () => {
         <section className="relative h-96 flex items-center justify-center my-12 overflow-hidden">
           {/* Imagen de fondo con blur y efecto parallax */}
           <div
-            className="absolute inset-0 bg-center bg-cover filter blur-md scale-105 transition-transform duration-1000 group-hover:scale-110"
+            className="absolute inset-0 bg-center bg-cover filter blur-sm scale-105 transition-transform duration-1000 group-hover:scale-110"
             style={{ backgroundImage: "url('/images/img-section-info.png')" }}
           ></div>
 
@@ -209,11 +207,11 @@ const Info = () => {
         </section>
 
         {/* Datos curiosos */}
-        <section className="mt-16 bg-green-100 p-6 rounded-xl shadow-md border-l-4 border-green-500 animate-fadeIn delay-400">
-          <h2 className="text-3xl font-bold mb-5 text-green-700">
+        <section className="mt-16 bg-[#e8eaec] p-6 rounded-xl shadow-md border-l-4 border-green-900 animate-fadeIn delay-400">
+          <h2 className="text-3xl font-bold mb-5 text-gray-900">
             🌍 ¿Sabías que...?
           </h2>
-          <ul className="space-y-3 text-lg text-gray-800">
+          <ul className="space-y-3 text-lg font-semibold text-gray-900">
             <li>
               📄 Reciclar una tonelada de papel ahorra <b>17 árboles</b>.
             </li>
@@ -226,7 +224,6 @@ const Info = () => {
             </li>
           </ul>
         </section>
-
         <FAQ />
       </div>
     </div>

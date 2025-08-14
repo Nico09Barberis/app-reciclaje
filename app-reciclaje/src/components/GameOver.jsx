@@ -27,7 +27,7 @@ export default function GameOver({ onRestart, onHome }) {
             duration: 1,
             ease: "easeInOut",
           }}
-          className="text-5xl font-extrabold mb-4 text-green-700"
+          className="text-5xl font-extrabold mb-4 text-[#26B75A]"
         >
           🎉 ¡Felicidades! 🎉
         </motion.h1>
@@ -38,7 +38,7 @@ export default function GameOver({ onRestart, onHome }) {
         <div className="flex gap-4 justify-center">
           <button
             onClick={onRestart}
-            className="bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition"
+            className="bg-[#26B75A] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#26B75A] transition"
           >
             Jugar de nuevo
           </button>

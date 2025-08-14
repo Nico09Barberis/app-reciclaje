@@ -72,7 +72,7 @@ export default function FAQ() {
 
   return (
     <section className="max-w-3xl mx-auto p-6 my-12">
-      <h2 className="text-4xl font-extrabold mb-6 text-green-700 tracking-tight text-center">
+      <h2 className="text-4xl font-extrabold mb-6 text-[#26B75A] tracking-tight text-center">
         ❓ Preguntas Frecuentes
       </h2>
 
@@ -82,13 +82,13 @@ export default function FAQ() {
           placeholder="Buscar pregunta..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full sm:w-2/3 px-4 py-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full sm:w-2/3 px-4 py-2 border bg-[#e8eaec] border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
           aria-label="Buscar preguntas frecuentes"
         />
         <div className="flex gap-2">
           <button
             onClick={expandAll}
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+            className="bg-[#26B75A] text-white px-4 py-2 rounded-lg hover:bg-[#26B75A] transition"
             aria-label="Expandir todas las respuestas"
           >
             Expandir todo
@@ -114,7 +114,7 @@ export default function FAQ() {
             <article
               key={i}
               className={`border border-gray-300 rounded-xl shadow-sm transition-colors duration-300 ${
-                isOpen ? "bg-green-50 border-green-400" : "bg-white"
+                isOpen ? "bg-[#e8eaec] border-green-400" : "bg-[#e8eaec]"
               }`}
               role="region"
               aria-expanded={isOpen}
@@ -161,7 +161,7 @@ export default function FAQ() {
 
                 {isOpen && (
                   <svg
-                    className="w-5 h-5 text-green-700"
+                    className="w-5 h-5 text-[#26B75A]"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
